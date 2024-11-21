@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScipt-Basic</title>
+    <script src="Basic.js"></script>
+</head>
+<body>
+
+    <h2>Hello World</h2>
+    <p id="msg">UwU</p>
+    <button type="button" onclick="text0()">Click</button>
+    <br><br><br>
+
+    <h2>Date</h2>
+    <button id="pdate" onclick="date()">Date & Time</button>
+    <br><br><br>
+
+    <h2>Calculator</h2>
+    <input type="number" id="first">
+    <input type="number" id="second">
+    <button onclick="sum()">ADD</button>
+    <button onclick="sub()">SUB</button>
+    <button onclick="mul()">MUL</button>
+    <button onclick="div()">DIV</button>
+    <button onclick="mod()">MOD</button>
+    <p id="OP1">Output : </p>
+    <br><br><br>
+
+    <h2>Logic</h2>
+    <p>Give your input 0 and 1.</p>
+    <p>AND gate : Z = X * Y</p>
+    <p>OR  gate : Z = X + Y</p>
+    <label for="fx">Enter Your Input x :</label>
+    <input type="number" id="x1">
+    <label for="fy">Enter Your Input y :</label>
+    <input type="number" id="y1">
+    <button onclick="and()">AND</button>
+    <button onclick="or()">OR</button>
+    <p id="OP2">Output z : </p>
+    <br>
+
+    <p>OR  gate I/P: Z = A</p>
+    <p>NOT gate O/P: Z = !A</p>
+    <label for="fa">Enter Your Input A :</label>
+    <input type="number" id="a1">
+    <button onclick="not()">NOT</button>
+    <p id="OP3">Output z : </p>
+    <br><br><br>
+
+    <h2>Age</h2>
+    <p>Your age should be above 18</p>
+    <label for="fage">Enter Your Age :</label>
+    <input type="number" id="age1">
+    <label for="fdob">Enter Your DOB :</label>
+    <input type="number" id="dob1">
+    <button onclick="date2()">Submit</button>
+    <p id="OP4">Output : </p>
+    <br><br><br>
+
+    <h2>DOB</h2>
+    <p>Know Your Age</p>
+    <label for="fdate">Enter Your Date :</label>
+    <input type="number" id="date3">
+    <label for="fmonth">Enter Your Month :</label>
+    <input type="number" id="month3">
+    <label for="fyear">Enter Your year :</label>
+    <input type="number" id="year3">
+    <button onclick="data3()">Submit</button>
+    
+    <p id="OP8">Condition for valid DOB : </p>
+    <p id="OP5">Your DOB : </p>
+    <p id="OP9">Your DOB is valid : </p>
+    <br><br><br>
+    
+
+
+    <h2>Marks-Sheet</h2>
+    <p>Know your result</p>
+
+    <label for="feng">English</label>
+    <input type="number" id="eng1">
+    <!-- <button onclick="D1()">Submit</button> -->
+    <p id="OP001">Output for English : </p>
+
+    <label for="fhin">Hindi</label>
+    <input type="number" id="hin1">
+    <!-- <button onclick="D2()">Submit</button> -->
+    <p id="OP002">Output for Hindi : </p>
+
+    <label for="fmat">Math</label>
+    <input type="number" id="mat1">
+    <!-- <button onclick="D3()">Submit</button> -->
+    <p id="OP003">Output for Math : </p>
+
+    <label for="fsci">Science</label>
+    <input type="number" id="sci1">
+    <!-- <button onclick="D4()">Submit</button> -->
+    <p id="OP004">Output for Science : </p>
+
+    <label for="fsoc">Social</label>
+    <input type="number" id="soc1">
+    <!-- <button onclick="D5()">Submit</button> -->
+    <p id="OP005">Output for Social : </p>
+
+    <!-- <p>Total marks :</p> -->
+    <p id="OP006">Output condition to check less then 175 & greater then 500 : </p>
+    <p id="OP007" style="font-size: 20px;">Total marks : </p>
+    <button onclick="D6()" style="padding: 20px;">Submit</button>
+</body>
+</html>
