@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+    <style>
+    table, th, td {
+        border:1px solid black;
+    }
+    </style>
+    <script src="index.js"></script>
+</head>
+<body>
+    <h1>Account-Details</h1>
+    <br><br>
+    <div>
+        <ul>
+            <li><a href="index.html"><button id ="homebtn">Home</button></a></li>
+            <li><button id="creditbtn" onclick="C1()">Credit</button></li>
+            <li><button id ="debitbtn" onclick="D1()">Debit</button></li>
+        </ul>
+    </div>
+    <br><br>
+    <table>
+        <tr>
+            <th>Information</th>
+            <th>Your details</th>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td>Biswanath Tudu</td>
+        </tr>
+        <tr>
+            <td>Email</td>
+            <td>biswanath@654gmail.com</td>
+        </tr>
+        <tr>
+            <td>Date of Birth</td>
+            <td>24/11/2000</td>
+        </tr>
+        <tr>
+            <td>Country</td>
+            <td>India</td>
+        </tr>
+        <tr>
+            <td>Balance</td>
+            <td id="tot-bal">*****</td>
+            <td><button onclick="balbtn()">Check</button></td>
+        </tr>
+    </table>
+</body>
+</html>

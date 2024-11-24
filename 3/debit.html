@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debit</title>
+    <script src="index.js"></script>
+</head>
+<body>
+    <h1>Debit</h1>
+    <br><br>
+    <div>
+        <ul>
+            <li><a href="index.html"><button id ="homebtn">Home</button></a></li>
+            <li><button id ="debitbtn" onclick="A1()">Account</button></li>
+            <li><button id="creditbtn" onclick="C1()">Credit</button></li>
+        </ul>
+    </div>
+    <br><br>
+    <label for="Debit">Enter your amount to debit into this account.</label>
+    <input type="number" id="add-d">
+    <button id="debbtn" onclick="deb()">Withdrawal</button>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Withdrawal history</th>
+        </tr>
+        <tr>
+            <th>Biswanath</th>
+            <th id="debited">Output</th>
+        </tr>
+    </table>
+</body>
+</html>
