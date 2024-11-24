@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Balance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 50px;
+        }
+        .page {
+            display: none;
+        }
+        .active-page {
+            display: block;
+        }
+        input {
+            padding: 8px;
+            width: 60%;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        button {
+            padding: 10px 20px;
+            margin-top: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Main Page (Home Page) -->
+<div id="mainPage" class="page active-page">
+    <h1>Home Page</h1>
+    <p>Total Balance: $<span id="totalBalance">0.00</span></p>
+    <button id="goToCreditPage">Go to Credit Page</button>
+</div>
+
+<!-- Credit Page -->
+<div id="creditPage" class="page">
+    <h1>Credit Page</h1>
+    <input type="number" id="creditAmount" placeholder="Enter amount to add" />
+    <button id="addCreditButton">Add Credit</button>
+    <button id="backToMainPage">Back to Home</button>
+</div>
+
+<script>
+    let totalBalance = 0; // This will keep the balance in memory
+
+    // Function to update the balance display
+    function updateBalance() {
+        document.getElementById('totalBalance').innerText = totalBalance.toFixed(2);
+    }
+
+    // Function to show the active page and hide the others
+    function setActivePage(pageId) {
+        const pages = document.querySelectorAll('.page');
+        pages.forEach(page => page.classList.remove('active-page')); // Hide all pages
+        document.getElementById(pageId).classList.add('active-page'); // Show selected page
+    }
+
+    // Go to Credit Page
+    document.getElementById('goToCreditPage').addEventListener('click', function () {
+        setActivePage('creditPage');
+    });
+
+    // Add credit and update balance
+    document.getElementById('addCreditButton').addEventListener('click', function () {
+        const creditAmount = parseFloat(document.getElementById('creditAmount').value);
+        if (!isNaN(creditAmount) && creditAmount > 0) {
+            totalBalance += creditAmount;
+            updateBalance();  // Update the balance on the Home Page
+            document.getElementById('creditAmount').value = ''; // Clear input field
+            setActivePage('mainPage');  // Go back to Home Page
+        } else {
+            alert("Please enter a valid amount!");
+        }
+    });
+
+    // Back to main page (Home)
+    document.getElementById('backToMainPage').addEventListener('click', function () {
+        setActivePage('mainPage');
+    });
+
+    // Initialize the balance on page load
+    updateBalance();
+</script>
+
+</body>
+</html>
+
+

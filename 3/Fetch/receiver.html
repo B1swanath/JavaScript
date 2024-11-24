@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 2</title>
+</head>
+<body>
+    <h1>Received Value</h1>
+    <p id="output">Waiting for input...</p>
+
+    <script>
+        // Get the stored value from localStorage
+        var inputValue = localStorage.getItem('inputValue');
+
+        // Display the value or a fallback message
+        document.getElementById('output').innerText = inputValue ? inputValue : "No input received.";
+    </script>
+</body>
+</html>

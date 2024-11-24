@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculate z</title>
+</head>
+<body>
+    <h1>Calculate z = (a - b) + c</h1>
+
+    <p>Enter value for a: <input type="number" id="aInput" value="5"></p>
+    <p>Enter value for b: <input type="number" id="bInput" value="3"></p>
+    <p>Enter value for c: <input type="number" id="cInput" value="8"></p>
+    <button id="calculateBtn">Calculate</button>
+
+    <p>Result of z: <span id="result">?</span></p>
+
+    <script>
+        // Add event listener to the button
+        document.getElementById('calculateBtn').addEventListener('click', function() {
+            // Get the values from the input fields
+            const a = parseFloat(document.getElementById('aInput').value);
+            const b = parseFloat(document.getElementById('bInput').value);
+            const c = parseFloat(document.getElementById('cInput').value);
+
+            // Perform the calculation (a - b) + c
+            const z = (a - b) + c;
+
+            // Display the result in the 'result' span
+            document.getElementById('result').textContent = z;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1</title>
+</head>
+<body>
+    <h1>Welcome to Page 1</h1>
+
+    <div id="content"></div> <!-- Content from another page will be inserted here -->
+
+    <script>
+        // Use the Fetch API to get content from page2.html
+        fetch('2fetch.html')
+            .then(response => response.text())  // Convert response to text (HTML)
+            .then(html => {
+                // Create a temporary DOM element to hold the fetched HTML
+                var tempDiv = document.createElement('div');
+                tempDiv.innerHTML = html;
+
+                // Select all <p> elements from the fetched HTML
+                var paragraphs = tempDiv.querySelectorAll('p');
+                
+                // If you want to insert all paragraphs into the current page
+                var contentDiv = document.getElementById('content');
+                paragraphs.forEach(p => {
+                    contentDiv.appendChild(p);
+                });
+            })
+            .catch(error => {
+                console.error('Error fetching page:', error);
+            });
+    </script>
+</body>
+</html>

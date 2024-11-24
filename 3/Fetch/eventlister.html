@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Button Click Example</title>
+</head>
+<body>
+    <h1>Button Click Example</h1>
+
+    <button id="myButton">Click Me</button> <!-- Button to trigger the if statement -->
+
+    <script>
+        // Get the button element
+        var button = document.getElementById('myButton');
+
+        // Add an event listener to the button to listen for click events
+        button.addEventListener('click', function() {
+            // Inside this function, we check the condition for the if statement
+            var someCondition = true;  // Example condition (you can modify this)
+
+            // If statement that works when the button is clicked
+            if (someCondition) {
+                alert('Condition is true!');  // Action if condition is true
+            } else {
+                alert('Condition is false!'); // Action if condition is false
+            }
+        });
+    </script>
+</body>
+</html>
