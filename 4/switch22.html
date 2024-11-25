@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch</title>
+</head>
+<body>
+    <h1>Calculator</h1>
+    <br><br><br>
+    <label for="fx">Enter Your Input x :</label>
+    <input type="number" id="first">
+
+    <!-- <label for="fo">Enter Your Input ("+ - % *") :</label>
+    <input type="text" id="option"> -->
+
+    <select id="optionSelect">
+        <option value="add">ADD</option>
+        <option value="sub">SUB</option>
+        <option value="mul">MUL</option>
+        <option value="div">DIV</option>
+        <option value="mod">MOD</option>
+    </select>
+
+    <label for="fy">Enter Your Input y :</label>
+    <input type="number" id="second">
+    <button onclick="res()">Click</button>
+    <p id="OP">Output z : </p>
+    <script>
+        // let x = +prompt("enter First Value")
+        // let y = +prompt("enter Second Value")
+        // let ope = prompt("+ - % *")
+
+
+    function res(){
+        let xval = document.getElementById("first").value;
+        let oval = document.getElementById("optionSelect").value;
+        let yval = document.getElementById("second").value;
+
+        let x = parseInt(xval);
+        let y = parseInt(yval);
+
+        switch(oval){
+            case "add":
+                let ADD = x + y;
+                document.getElementById("OP").innerHTML= "Output z : " + ADD ;
+                break;
+            case "sub":
+                let SUB = x - y;
+                document.getElementById("OP").innerHTML= "Output z : " + SUB ;
+                break;
+            case "mul":
+                let MUL = x * y;
+                document.getElementById("OP").innerHTML= "Output z : " + MUL ;
+                break
+            case "div": 
+                let DIV = x / y;
+                document.getElementById("OP").innerHTML= "Output z : " + DIV ;
+                break;
+            case "mod": 
+                let MOD = x % y;
+                document.getElementById("OP").innerHTML= "Output z : " + MOD ;
+                break
+            default:
+                document.getElementById("OP").innerHTML= "Output z : Enter Valid Numbers" ;
+        }
+    }
+    </script>
+</body>
+</html>

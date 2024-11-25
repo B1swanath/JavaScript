@@ -1,0 +1,109 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Switch Case Example</title>
+</head>
+<body>
+
+  <h1>Choose an option:</h1>
+  <select id="optionSelect">
+    <option value="apple">Apple</option>
+    <option value="banana">Banana</option>
+    <option value="cherry">Cherry</option>
+  </select>
+
+  <button onclick="changeContent()">Get Fruit Description</button>
+
+  <p id="fruitDescription">Select a fruit to see the description.</p>
+
+  <script>
+    function changeContent() {
+      const selectedOption = document.getElementById("optionSelect").value;
+      const description = document.getElementById("fruitDescription");
+
+      switch (selectedOption) {
+        case "apple":
+          description.innerHTML = "Apple: A sweet, crunchy fruit, often red or green.";
+          break;
+        case "banana":
+          description.innerHTML = "Banana: A long, yellow fruit that is sweet and soft.";
+          break;
+        case "cherry":
+          description.innerHTML = "Cherry: A small, round, red fruit with a pit.";
+          break;
+        default:
+          description.innerHTML = "Select a fruit to see the description.";
+      }
+    }
+  </script>
+
+</body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Operations with Switch Case</title>
+</head>
+<body>
+    <h1>Arithmetic Operations</h1>
+
+    <!-- Input fields for numbers and operator -->
+    <label for="num1">Enter First Number:</label>
+    <input type="number" id="num1" required><br><br>
+
+    <label for="num2">Enter Second Number:</label>
+    <input type="number" id="num2" required><br><br>
+
+    <label for="operator">Choose Operator (+, -, *, /):</label>
+    <input type="text" id="operator" maxlength="1" required><br><br>
+
+    <!-- Button to trigger calculation -->
+    <button onclick="performCalculation()">Calculate</button>
+
+    <!-- Area to display the result -->
+    <h2>Result: <span id="result"></span></h2>
+
+    <script>
+        function performCalculation() {
+            // Get values from input fields
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operator = document.getElementById('operator').value;
+
+            let result;
+
+            // Use switch statement to perform the operation
+            switch(operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        result = 'Error: Division by zero is not allowed.';
+                    }
+                    break;
+                default:
+                    result = 'Error: Invalid operator.';
+                    break;
+            }
+
+            // Display the result in the "result" span
+            document.getElementById('result').textContent = result;
+        }
+    </script>
+</body>
+</html>
