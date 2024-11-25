@@ -3,32 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculate z</title>
+    <title>Arithmetic Operations with Switch Case</title>
 </head>
 <body>
-    <h1>Calculate z = (a - b) + c</h1>
+    <h1>Arithmetic Operations</h1>
 
-    <p>Enter value for a: <input type="number" id="aInput" value="5"></p>
-    <p>Enter value for b: <input type="number" id="bInput" value="3"></p>
-    <p>Enter value for c: <input type="number" id="cInput" value="8"></p>
-    <button id="calculateBtn">Calculate</button>
+    <!-- Input fields for numbers and operator -->
+    <label for="num1">Enter First Number:</label>
+    <input type="number" id="num1" required><br><br>
 
-    <p>Result of z: <span id="result">?</span></p>
+    <label for="num2">Enter Second Number:</label>
+    <input type="number" id="num2" required><br><br>
+
+    <label for="operator">Choose Operator (+, -, *, /):</label>
+    <input type="text" id="operator" maxlength="1" required><br><br>
+
+    <!-- Button to trigger calculation -->
+    <button onclick="performCalculation()">Calculate</button>
+
+    <!-- Area to display the result -->
+    <h2>Result: <span id="result"></span></h2>
 
     <script>
-        // Add event listener to the button
-        document.getElementById('calculateBtn').addEventListener('click', function() {
-            // Get the values from the input fields
-            const a = parseFloat(document.getElementById('aInput').value);
-            const b = parseFloat(document.getElementById('bInput').value);
-            const c = parseFloat(document.getElementById('cInput').value);
+        function performCalculation() {
+            // Get values from input fields
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operator = document.getElementById('operator').value;
 
-            // Perform the calculation (a - b) + c
-            const z = (a - b) + c;
+            let result;
 
-            // Display the result in the 'result' span
-            document.getElementById('result').textContent = z;
-        });
+            // Use switch statement to perform the operation
+            switch(operator) {
+                case '+':
+                    result = num1 + num2;
+                    break;
+                case '-':
+                    result = num1 - num2;
+                    break;
+                case '*':
+                    result = num1 * num2;
+                    break;
+                case '/':
+                    if (num2 !== 0) {
+                        result = num1 / num2;
+                    } else {
+                        result = 'Error: Division by zero is not allowed.';
+                    }
+                    break;
+                default:
+                    result = 'Error: Invalid operator.';
+                    break;
+            }
+
+            // Display the result in the "result" span
+            document.getElementById('result').textContent = result;
+        }
     </script>
 </body>
 </html>
