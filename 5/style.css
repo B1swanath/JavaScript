@@ -1,0 +1,83 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h2{
+    padding: 20px;
+    margin-top: 30px;
+}
+
+form{
+    margin-left: 10rem;
+    margin-top: 30px;
+}
+
+form #min{
+    padding: 10px 20px 10px 20px;
+}
+
+form #max{
+    padding: 10px 20px 10px 20px;
+}
+
+form .filter{
+    padding: 10px 20px 10px 20px;
+    margin-left: 5px;
+}
+
+.nav{
+    background-color: #ffa41c;
+    padding: 10px;
+    text-align: end;
+    position: fixed;
+    top: 0px;
+    width: 100%;
+}
+
+.nav a{
+    color: black;
+    font-weight: 700;
+    text-decoration: none;
+    margin: 0px 10px 0px 10px;
+}
+
+.cardmain{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.card{
+    border: 2px, solid, black;
+    padding: 10px;
+    margin: 20px 5px 5px 5px;
+    text-align: center;
+}
+
+.card ul li{
+    padding: 5px;
+    list-style-type: none;
+}
+
+.card button{
+    color: #0f1111;
+    background-color: #ffa41c;
+    padding: 5px 5rem 5px 5rem;
+    margin: 5px;
+    border: none;
+    border-radius: 15px;
+}
+
+.card button:hover{
+    background-color: #ffd814;
+}
+
+.GL{
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
