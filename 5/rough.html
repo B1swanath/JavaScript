@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="product-card" data-id="1">
+        <h2 class="product-name">Laptop</h2>
+        <span class="product-price">$999.99</span>
+        <p class="product-description">High-performance laptop with 16GB RAM.</p>
+    </div>
+      
+    <div class="product-card" data-id="2">
+        <h2 class="product-name">Smartphone</h2>
+        <span class="product-price">$699.99</span>
+        <p class="product-description">5G enabled smartphone with an OLED display.</p>
+    </div>
+      
+      <!-- Add more product cards as needed -->
+
+    <div class="product-card" data-id="3">
+        <h2 class="product-name">Laptop</h2>
+        <span class="product-price">$999.99</span>
+        <p class="product-description">High-performance laptop with 16GB RAM.</p>
+    </div>
+      
+    <div class="product-card" data-id="4">
+        <h2 class="product-name">Smartphone</h2>
+        <span class="product-price">$699.99</span>
+        <p class="product-description">5G enabled smartphone with an OLED display.</p>
+    </div>
+
+<script>
+    // Add event listeners to all product cards
+const productCards = document.querySelectorAll('.product-card');
+
+productCards.forEach(card => {
+  card.addEventListener('click', function(event) {
+    // Find the closest '.product-card' element (in case of nested elements inside the card)
+    const productCard = event.target.closest('.product-card');
+
+    // Get product details from the clicked card
+    const productId = productCard.getAttribute('data-id');
+    const productName = productCard.querySelector('.product-name').textContent;
+    const productPrice = productCard.querySelector('.product-price').textContent;
+    const productDescription = productCard.querySelector('.product-description').textContent;
+
+    // Output the product details
+    console.log('Product ID:', productId);
+    console.log('Product Name:', productName);
+    console.log('Product Price:', productPrice);
+    console.log('Product Description:', productDescription);
+  });
+});
+
+</script>
+</body>
+</html>
+
+  

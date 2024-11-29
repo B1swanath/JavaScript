@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Page with Cart</title>
+  <style>
+    /* Basic styling for products and cart */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+    }
+    .product-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .product-card {
+      border: 1px solid #ddd;
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+      border-radius: 10px;
+    }
+    .product-card h3 {
+      font-size: 18px;
+    }
+    .product-card button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .cart {
+      margin-top: 40px;
+    }
+    .cart h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .cart-item {
+      padding: 10px;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Product List</h1>
+
+  <div class="product-list">
+    <!-- Product 1 -->
+    <div class="product-card" data-id="1">
+      <h3 class="product-name">Laptop</h3>
+      <p class="product-price">$999.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product-card" data-id="2">
+      <h3 class="product-name">Smartphone</h3>
+      <p class="product-price">$699.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+
+    <!-- Product 3 -->
+    <div class="product-card" data-id="3">
+      <h3 class="product-name">Tablet</h3>
+      <p class="product-price">$499.99</p>
+      <button class="add-to-cart">Add to Cart</button>
+    </div>
+  </div>
+
+  <div class="cart">
+    <h2>Your Cart</h2>
+    <div id="cart-items"></div>
+    <p>Total: <span id="total-price">$0.00</span></p>
+  </div>
+
+  <script>
+    // Sample product data
+    const products = [
+      { id: 1, name: 'Laptop', price: 999.99 },
+      { id: 2, name: 'Smartphone', price: 699.99 },
+      { id: 3, name: 'Tablet', price: 499.99 }
+    ];
+
+    const cart = []; // Array to store cart items
+
+    // Function to update the cart UI
+    function updateCart() {
+      const cartItemsContainer = document.getElementById('cart-items');
+      const totalPriceElement = document.getElementById('total-price');
+      
+      // Clear previous cart items
+      cartItemsContainer.innerHTML = '';
+
+      let totalPrice = 0;
+
+      // Display each item in the cart
+      cart.forEach(item => {
+        const cartItem = document.createElement('div');
+        cartItem.classList.add('cart-item');
+        cartItem.textContent = `${item.name} - $${item.price.toFixed(2)}`;
+        cartItemsContainer.appendChild(cartItem);
+        totalPrice += item.price;
+      });
+
+      // Update the total price
+      totalPriceElement.textContent = `$${totalPrice.toFixed(2)}`;
+    }
+
+    // Event listener for adding items to the cart
+    const addToCartButtons = document.querySelectorAll('.add-to-cart');
+    addToCartButtons.forEach(button => {
+      button.addEventListener('click', function(event) {
+        const productCard = event.target.closest('.product-card');
+        const productId = parseInt(productCard.getAttribute('data-id'));
+
+        // Find the product details based on the ID
+        const product = products.find(p => p.id === productId);
+
+        if (product) {
+          // Add the product to the cart
+          cart.push(product);
+          console.log(`${product.name} added to cart`);
+
+          // Update the cart UI
+          updateCart();
+        }
+      });
+    });
+  </script>
+  
+</body>
+</html>
