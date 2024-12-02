@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carts</title>
+    <style>
+        #product{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .items{
+            border: 2px solid black;
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="product"></div>
+    <script>
+        async function getData(){
+            const url = await fetch("https://dummyjson.com/carts");
+            let data = await url.json()
+            let mydata = data.carts
+            console.log(mydata)
+
+            let myproduct = mydata.map((e)=>{
+                return(
+                    `
+                    <div class="items">
+                    <p>Id:${e.id}</p>
+                    <p>products:${e.products.map((p1)=>{
+                        return(
+                            `
+                            <p>Id:${p1.id}</p>
+                            <p>title:${p1.title}</p>
+                            <p>price:${p1.price}</p>
+                            <p>quantity:${p1.quantity}</p>
+                            <p>total:${p1.total}</p>
+                            <p>discountPercentage:${p1.discountPercentage}</p>
+                            <p>discountedTotal:${p1.discountedTotal}</p>
+                            <img src="${p1.thumbnail}" alt="#">
+                            `
+                        )
+                    })}<p>
+                    <p>total:${e.total}<p>
+                    <p>discountedTotal:${e.discountedTotal}<p>
+                    <p>userId:${e.userId}<p>
+                    <p>totalProducts:${e.totalProducts}<p>
+                    <p>totalQuantity:${e.totalQuantity}<p>
+                    </div>
+                    `
+                )
+            }).join("")
+            document.getElementById("product").innerHTML= myproduct;
+        }getData()
+    </script>
+</body>
+</html>

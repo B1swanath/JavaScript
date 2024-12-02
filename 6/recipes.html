@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipes</title>
+    <style>
+        #product{
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .items{
+            border: 2px solid black;
+            margin: 10px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div id="product"></div>
+    <script>
+        async function getData(){
+            const url = await fetch("https://dummyjson.com/recipes");
+            let data = await url.json()
+            let mydata = data.recipes
+            console.log(mydata)
+
+            let myproduct = mydata.map((e)=>{
+                return(
+                    `
+                    <div class="items">
+                    <p>Id:${e.id}</p>
+                    <p>Name:${e.name}</p>
+                    <p>Ingredients:${e.ingredients}</p>
+                    <p>Instructions:${e.instructions}</p>
+                    <p>PrepTimeMinutes:${e.prepTimeMinutes}<p>
+                    <p>CookTimeMinutes:${e.cookTimeMinutes}<p>
+                    <p>servings:${e.servings}<p>
+                    <p>Difficulty:${e.difficulty}<p>
+                    <p>Cuisine:${e.cuisine}<p>
+                    <p>CaloriesPerServing:${e.caloriesPerServing}<p>
+                    <p>Tags:${e.tags}<p>
+                    <p>UserId:${e.userId}<p>
+                    <img src="${e.image}" alt="#">
+                    <p>Rating:${e.rating}<p>
+                    <p>ReviewCount:${e.reviewCount}<p>
+                    <p>MealType:${e.mealType}<p>
+                    </div>
+                    `
+                )
+            }).join("")
+            document.getElementById("product").innerHTML= myproduct;
+        }getData()
+    </script>
+</body>
+</html>

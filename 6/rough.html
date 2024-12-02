@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="button-container">
+        <button class="action-button" data-action="action1">Button 1</button>
+        <button class="action-button" data-action="action2">Button 2</button>
+        <button class="action-button" data-action="action3">Button 3</button>
+    </div>
+
+    <script>
+        document.querySelector('.button-container').addEventListener('click', function (event) {
+    // Check if the clicked element is a button or has the required class
+    const button = event.target.closest('.action-button');
+    
+    // If no button was clicked, exit
+    if (!button) return;
+    
+    // Get the data-action attribute value
+    const action = button.dataset.action;
+
+    // Perform different actions based on the button clicked
+    switch (action) {
+        case 'action1':
+            // console.log('Action 1 triggered');
+            prompt("Action 1 triggered");
+            break;
+        case 'action2':
+            console.log('Action 2 triggered');
+            break;
+        case 'action3':
+            console.log('Action 3 triggered');
+            break;
+        default:
+            console.log('Unknown action');
+    }
+    });
+    </script>
+</body>
+</html>
+
+
+
