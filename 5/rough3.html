@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <ul>
+            <span><p class="GL1 GL">Dell Alienware, <br> Intel Core i9-13900HK/32GB/2TB SSD/ <br> NVIDIA RTX 4090 16GB/Lunar Silver</p></span>
+            <li class="bb1">Brand : Dell</li>
+            <li class="bb1">Model Name : Dell Alienware</li>
+            <li>Screen Size : 16 Inches</li>          
+            <li class="bb1">Colour : Lunar Silver</li>
+            <li class="bb1">Operating System : Windows 11 Home</li>
+            <li class="bb1">CPU Model : Intel Core i9 13900HK</li>
+            <li class="bb1">RAM Memory : 32 GB</li>
+            <li class="bb1">Storage : 2 TB SSD</li>
+            <li class="bb1">Graphics Coprocessor : NVIDIA GeForce RTX 4090 16GB</li>
+            <li><del>Original Price : ₹4,54,236</del></li>
+            <li id="fp1">Fake Price : ₹4,50,000</li>
+        </ul>
+        <button class="data-button" data-info="info GL1">Button 1</button>
+    </div>
+    <button class="data-button" data-info="info 2">Button 2</button>
+    <button class="data-button" data-info="info 3">Button 3</button>
+    <button class="data-button" data-info="info 4">Button 4</button>
+
+    <script>
+        function handleButtonClick(event){
+        const clickedButton = event.target;
+        const info = clickedButton.getAttribute("data-info");
+        console.log(`You clicked: ${info}`);
+    }
+    const buttons = document.querySelectorAll(".data-button");
+    buttons.forEach(button => {
+    button.addEventListener("click", handleButtonClick);
+    });
+    </script>
+</body>
+</html>
