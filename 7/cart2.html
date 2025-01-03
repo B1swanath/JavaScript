@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         * {
+      box-sizing: border-box;
+      font-family: sans-serif;
+  }
+
+  body {
+      margin: 0;
+      padding: 0;
+  }
+
+  .container {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 10px;
+      margin: 0 auto;
+      padding: 10px;
+      max-width: 1100px;
+      min-height: 100vh;
+  }
+
+  aside,
+  main {
+      border: 1px solid grey;
+      padding: 10px;
+  }
+
+  .cards {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+      flex-wrap: wrap;
+  }
+  
+  img{
+    height: 250px;
+  }
+  .card {
+      text-align: center;
+  }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <aside>
+            <aside>
+                <h2>Product Basket</h2>
+                <ul id="cart"></ul>
+                <div id="total">Total Amount: $0</div>
+            </aside>
+        </aside>
+        <main>
+            <div class="cards">
+                <div class="card" id="apple1">
+                    <img src="apple-17.webp" alt="apple">
+                    <h2>Apple</h2>
+                    <p><mark><span class="price">8</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="card" id="apple2">
+                    <img src="apple-17.webp" alt="apple">
+                    <h2>Apple</h2>
+                    <p><mark><span class="price">9</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="card" id="banana1">
+                    <img src="apple-17.webp" alt="banan">
+                    <h2>Banan</h2>
+                    <p><mark><span class="price">10</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="card" id="banana2">
+                    <img src="apple-17.webp" alt="banan">
+                    <h2>Banan</h2>
+                    <p><mark><span class="price">11</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="card" id="banana3">
+                    <img src="apple-17.webp" alt="banan">
+                    <h2>Banan</h2>
+                    <p><mark><span class="price">12</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="card" id="cherry1">
+                    <img src="apple-17.webp" alt="cherry">
+                    <h2>Cherry</h2>
+                    <p><mark><span class="price">13</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="card" id="cherry2">
+                    <img src="apple-17.webp" alt="cherry">
+                    <h2>Cherry</h2>
+                    <p><mark><span class="price">8</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="card" id="cherry3">
+                    <img src="apple-17.webp" alt="cherry">
+                    <h2>Cherry</h2>
+                    <p><mark><span class="price">8</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="card" id="grape1">
+                    <img src="apple-17.webp" alt="grape">
+                    <h2>Grape</h2>
+                    <p><mark><span class="price">8</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="card" id="grape2">
+                    <img src="apple-17.webp" alt="grape">
+                    <h2>Grape</h2>
+                    <p><mark><span class="price">8</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+                <div class="card" id="grape3">
+                    <img src="apple-17.webp" alt="grape">
+                    <h2>Grape</h2>
+                    <p><mark><span class="price">8</span>$</mark></p>
+                    <button>Add to cart</button>
+                </div>
+            </div>
+
+
+        </main>
+    </div>
+    <script>
+        const cards = document.querySelectorAll('.card');
+        const cart = document.getElementById('cart');
+        const totalElement = document.getElementById('total'); 
+        const selectedItems = {};
+
+        function handleCardClick(event) {
+            const card = event.currentTarget;
+            const itemId = card.id;
+            const itemName = card.querySelector('h2').textContent;
+            const itemPrice = parseFloat(card.querySelector('.price').textContent); 
+
+            if (selectedItems[itemId]) {
+                selectedItems[itemId].count++;
+            } else {
+                selectedItems[itemId] = {
+                    name: itemName,
+                    price: itemPrice,
+                    count: 1,
+                };
+            }
+
+            updateCart();
+        }
+
+        function updateCart() {
+            cart.innerHTML = '';
+            let total = 0; 
+
+            for (const itemId in selectedItems) {
+                const item = selectedItems[itemId];
+                const listItem = document.createElement('li');
+                const quantityContainer = document.createElement('div'); 
+                const quantityText = document.createElement('span'); 
+                const addButton = document.createElement('button');
+                const subtractButton = document.createElement('button');
+
+                addButton.textContent = '+';
+                subtractButton.textContent = '-';
+
+                quantityText.textContent = item.count; 
+
+                addButton.addEventListener('click', () => {
+                    addItem(itemId);
+                });
+
+                subtractButton.addEventListener('click', () => {
+                    removeItem(itemId);
+                });
+
+                const hr = document.createElement('hr');
+
+                quantityContainer.appendChild(subtractButton); 
+                quantityContainer.appendChild(quantityText); 
+                quantityContainer.appendChild(addButton); 
+                quantityContainer.appendChild(hr); 
+
+                listItem.textContent = `${item.name} - $${item.price * item.count}`;
+                listItem.appendChild(quantityContainer); 
+                cart.appendChild(listItem);
+
+                total += item.price * item.count; 
+            }
+
+            totalElement.textContent = `Total: $${total.toFixed(2)}`; 
+        }
+
+        function addItem(itemId) {
+            if (selectedItems[itemId]) {
+                selectedItems[itemId].count++;
+            }
+            updateCart();
+        }
+
+        function removeItem(itemId) {
+            if (selectedItems[itemId]) {
+                selectedItems[itemId].count--;
+                if (selectedItems[itemId].count <= 0) {
+                    delete selectedItems[itemId];
+                }
+            }
+            updateCart();
+        }
+
+        cards.forEach((card) => {
+            card.addEventListener('click', handleCardClick);
+        });
+    </script>
+ </div>
+</body>
+</html>

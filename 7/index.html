@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+        }
+        .product, .cart {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+        .product button, .cart button {
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .product button:hover, .cart button:hover {
+            background-color: #218838;
+        }
+        .cart {
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        #cart-items {
+            margin-top: 20px;
+        }
+        .total {
+            margin-top: 10px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Shopping Cart Example</h1>
+
+        <div class="product">
+            <span>Laptop - $899.99</span>
+            <button onclick="addToCart('Laptop', 899.99)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Smartphone - $599.99</span>
+            <button onclick="addToCart('Smartphone', 599.99)">Add to Cart</button>
+        </div>
+        <div class="product">
+            <span>Headphones - $199.99</span>
+            <button onclick="addToCart('Headphones', 199.99)">Add to Cart</button>
+        </div>
+
+        <div class="cart">
+            <h3>Your Cart</h3>
+            <div id="cart-items">
+                <!-- Cart items will appear here -->
+            </div>
+            <div class="total">
+                <strong>Total: $<span id="total-price">0</span></strong>
+            </div>
+            <button onclick="clearCart()">Clear Cart</button>
+        </div>
+    </div>
+
+    <script>
+        let cart = [];
+        let totalPrice = 0;
+
+        function addToCart(name, price) {
+            // Check if the item is already in the cart
+            const existingItem = cart.find(item => item.name === name);
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({ name, price, quantity: 1 });
+            }
+            updateCart();
+        }
+
+        function removeItemFromCart(name) {
+            cart = cart.filter(item => item.name !== name);
+            updateCart();
+        }
+
+        function updateCart() {
+            // Update cart display
+            const cartItemsDiv = document.getElementById('cart-items');
+            cartItemsDiv.innerHTML = '';
+
+            totalPrice = 0;
+            cart.forEach(item => {
+                const itemDiv = document.createElement('div');
+                itemDiv.classList.add('cart-item');
+                itemDiv.innerHTML = `
+                    ${item.name} - $${item.price} x ${item.quantity} 
+                    <button onclick="removeItemFromCart('${item.name}')">Remove</button>
+                `;
+                cartItemsDiv.appendChild(itemDiv);
+                totalPrice += item.price * item.quantity;
+            });
+
+            // Update total price
+            document.getElementById('total-price').textContent = totalPrice.toFixed(2);
+        }
+
+        function clearCart() {
+            cart = [];
+            updateCart();
+        }
+    </script>
+
+</body>
+</html>
